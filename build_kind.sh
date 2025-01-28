@@ -201,6 +201,7 @@ function gettingStarted() {
 
 ###############################################################################################################
 
+cleanup
 logDetails
 prepare #Check Prerequisite
 
