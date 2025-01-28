@@ -111,7 +111,7 @@ function configureAndInstall() {
     # Start docker service
     printf -- "Starting docker service\n"
     sudo service docker start
-    sleep 20s
+    # sleep 20s
 
     cd "$SOURCE_ROOT"
     #Check if kind directory exists
