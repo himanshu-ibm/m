@@ -41,12 +41,12 @@ function prepare() {
 		exit 1
 	fi
 
- 	if [[ "$USER_IN_GROUP_DOCKER" == "1" ]]; then
-        	printf "User $USER belongs to group docker\n" |& tee -a "${LOG_FILE}"
-        else
-        	printf "Please ensure User $USER belongs to group docker\n"
-        exit 1
-        fi
+ 	# if [[ "$USER_IN_GROUP_DOCKER" == "1" ]]; then
+  #       	printf "User $USER belongs to group docker\n" |& tee -a "${LOG_FILE}"
+  #       else
+  #       	printf "Please ensure User $USER belongs to group docker\n"
+  #       exit 1
+  #       fi
 	
 	if [[ "$FORCE" == "true" ]]; then
 		printf -- 'Force attribute provided hence continuing with install without confirmation message\n' |& tee -a "$LOG_FILE"
@@ -109,8 +109,8 @@ function configureAndInstall() {
     go version
 
     # Start docker service
-    printf -- "Starting docker service\n"
-    sudo service docker start
+    # printf -- "Starting docker service\n"
+    # sudo service docker start
     # sleep 20s
 
     cd "$SOURCE_ROOT"
