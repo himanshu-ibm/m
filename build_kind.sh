@@ -221,7 +221,7 @@ case "$DISTRO" in
 "sles-15.6")
     printf -- "Installing %s %s for %s \n" "$PACKAGE_NAME" "$PACKAGE_VERSION" "$DISTRO" | tee -a "$LOG_FILE"
     printf -- "Installing dependencies ... it may take some time.\n"
-    sudo zypper install -y curl git make wget tar gcc glibc-devel-static make which patch docker containerd docker-buildx iproute2 2>&1 | tee -a "$LOG_FILE"
+    sudo zypper install -y curl git make wget tar gcc glibc-devel-static make which patch docker containerd iproute2 2>&1 | tee -a "$LOG_FILE"
     export CC=gcc
     configureAndInstall |& tee -a "$LOG_FILE"
     ;;
