@@ -12,7 +12,7 @@ set -o pipefail
 
 PACKAGE_NAME="kind"
 PACKAGE_VERSION="v0.26.0"
-GOLANG_VERSION="1.23.0"
+GOLANG_VERSION="1.23.4"
 FORCE="false"
 export SOURCE_ROOT=$(pwd)
 PATCH_URL="https://raw.githubusercontent.com/linux-on-ibm-z/scripts/master/Kind/0.25.0/patch"
