@@ -7,7 +7,7 @@ index 554693ab..33dcd5ae 100644
  # - v1.100-go1.17-bullseye.0 does not
  KUBERNETES_VERSION ?= v1.31.0
 -GO_VERSION ?= 1.23.2
-+GO_VERSION ?= 1.23.4
++GO_VERSION ?= 1.23.3
  GO_MAJOR_VERSION ?= 1.23
  OS_CODENAME ?= bullseye
  REVISION ?= 0
