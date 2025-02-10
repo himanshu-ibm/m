@@ -179,7 +179,7 @@ function runRegressionTests() {
 
   make -C addons/wurfl/dummy
 
-  make -j$(nproc) all \
+  make -j1 all \
       ERR=1 \
       TARGET=linux-glibc \
       CC=gcc \
