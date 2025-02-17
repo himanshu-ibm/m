@@ -285,8 +285,8 @@ case "$DISTRO" in
     "sles-15.6")
         printf -- "Installing %s %s for %s \n" "$PACKAGE_NAME" "$PACKAGE_VERSION" "$DISTRO" |& tee -a "$LOG_FILE"
         printf -- "Installing dependencies... it may take some time.\n"
-        sudo zypper install -y awk gcc gcc-c++ gzip make tar wget xz zlib-devel libopenssl-devel pcre2-devel systemd-devel |& tee -a "$LOG_FILE"
-	buildAndInstallLua |& tee -a "$LOG_FILE"
+        sudo zypper install -y awk gcc gcc-c++ gzip make tar wget xz zlib-devel libopenssl-devel pcre2-devel systemd-devel lua54-devel |& tee -a "$LOG_FILE"
+	# buildAndInstallLua |& tee -a "$LOG_FILE"
         configureAndInstall |& tee -a "$LOG_FILE"
         ;;
     "ubuntu-20.04" | "ubuntu-22.04" | "ubuntu-24.04" | "ubuntu-24.10")
