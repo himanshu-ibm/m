@@ -1,9 +1,9 @@
 #!/bin/bash
-# © Copyright IBM Corporation 2024.
+# © Copyright IBM Corporation 2025.
 # LICENSE: Apache License, Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
 #
 # Instructions:
-# Download build script: wget https://raw.githubusercontent.com/linux-on-ibm-z/scripts/master/HAProxy/3.1.0/build_haproxy.sh
+# Download build script: wget https://raw.githubusercontent.com/linux-on-ibm-z/scripts/master/HAProxy/3.1.3/build_haproxy.sh
 # Execute build script: bash build_haproxy.sh    (provide -h for help)
 
 
@@ -12,6 +12,7 @@ set -e -o pipefail
 PACKAGE_NAME="haproxy"
 PACKAGE_VERSION="3.1.3"
 CURDIR="$(pwd)"
+SOURCE_ROOT="$(pwd)"
 FORCE="false"
 TESTS='true'
 LOG_FILE="$CURDIR/logs/${PACKAGE_NAME}-${PACKAGE_VERSION}-$(date +"%F-%T").log"
@@ -61,21 +62,9 @@ function prepare() {
 
 function cleanup() {
     # Remove artifacts
-    if [ -f "$CURDIR/haproxy-${PACKAGE_VERSION}.tar.gz" ]; then
-      rm -rf "$CURDIR/haproxy-"*".tar.gz"*
-    fi
-    if [ -d "$CURDIR/haproxy-${PACKAGE_VERSION}" ]; then
-      rm -rf "haproxy-"*
-    fi
-    if [ -f "$CURDIR/lua-${PACKAGE_VERSION}.tar.gz" ]; then
-      rm -rf "$CURDIR/lua-"*".tar.gz"*
-    fi
-    if [ -d "$CURDIR/lua-${PACKAGE_VERSION}" ]; then
-      rm -rf "lua-"*
-    fi
-    if [ -d "$CURDIR/vtest" ]; then
-      rm -rf "$CURDIR/vtest"
-    fi
+    rm -rf "$CURDIR/haproxy-${PACKAGE_VERSION}"* \
+    	   "$CURDIR/lua-${PACKAGE_VERSION}"* \
+    	   "$CURDIR/vtest"
     printf -- "Cleaned up the artifacts\n" >> "$LOG_FILE"
 }
 
@@ -112,19 +101,16 @@ function buildAndInstallLua() {
   make linux "MYCFLAGS=-fPIC" "R=5.4"
   sudo make install
   
-  if [[ "$DISTRO" == "ubuntu-20.04" ]]; then
-     sudo cp src/liblua5.4.so /usr/lib/
-     sudo cp /usr/local/bin/lua* /usr/bin/
-     sudo rm -f /usr/lib/liblua.so
-     sudo ln -s /usr/lib/liblua5.4.so /usr/lib/liblua.so
-     lua -v
-  else
-     sudo cp src/liblua5.4.so /usr/lib64/
-     sudo cp /usr/local/bin/lua* /usr/bin/
-     sudo rm -f /usr/lib64/liblua.so
-     sudo ln -s /usr/lib64/liblua5.4.so /usr/lib64/liblua.so
-     lua -v
+  LIB_DIR="/usr/lib"
+  if [[ "$DISTRO" != "ubuntu-20.04" ]]; then
+    LIB_DIR="/usr/lib64"
   fi
+  sudo cp /usr/local/bin/lua* /usr/bin/
+  sudo cp src/liblua5.4.so "$LIB_DIR/"
+  sudo rm -f "$LIB_DIR/liblua.so"
+  sudo ln -s "$LIB_DIR/liblua5.4.so" "$LIB_DIR/liblua.so"
+  lua -v
+
   printf -- 'lua installed successfully\n'
 }
 
@@ -184,7 +170,7 @@ function runRegressionTests() {
       TARGET=linux-glibc \
       CC=gcc \
       DEBUG="-DDEBUG_STRICT -DDEBUG_MEMORY_POOLS -DDEBUG_POOL_INTEGRITY" \
-      USE_ZLIB=1 USE_PCRE2=1 USE_PCRE2_JIT=1 USE_LUA=1 USE_OPENSSL=1 USE_SYSTEMD=1 USE_WURFL=1 WURFL_INC=addons/wurfl/dummy WURFL_LIB=addons/wurfl/dummy USE_DEVICEATLAS=1 DEVICEATLAS_SRC=addons/deviceatlas/dummy USE_PROMEX=1 USE_51DEGREES=1 51DEGREES_SRC=addons/51degrees/dummy/pattern \
+      USE_ZLIB=1 USE_PCRE2=1 USE_PCRE2_JIT=1 USE_LUA=1 USE_OPENSSL=1 USE_WURFL=1 WURFL_INC=addons/wurfl/dummy WURFL_LIB=addons/wurfl/dummy USE_DEVICEATLAS=1 DEVICEATLAS_SRC=addons/deviceatlas/dummy USE_PROMEX=1 USE_51DEGREES=1 51DEGREES_SRC=addons/51degrees/dummy/pattern \
       ADDLIB="-Wl,-rpath,/usr/local/lib/ -Wl,-rpath,$HOME/opt/lib/"
 
   sudo make install
@@ -299,8 +285,8 @@ case "$DISTRO" in
     "sles-15.6")
         printf -- "Installing %s %s for %s \n" "$PACKAGE_NAME" "$PACKAGE_VERSION" "$DISTRO" |& tee -a "$LOG_FILE"
         printf -- "Installing dependencies... it may take some time.\n"
-        sudo zypper install -y awk gcc gcc-c++ gzip make tar wget xz zlib-devel libopenssl-devel lua54-devel pcre2-devel \
-          systemd-devel |& tee -a "$LOG_FILE"
+        sudo zypper install -y awk gcc gcc-c++ gzip make tar wget xz zlib-devel libopenssl-devel pcre2-devel systemd-devel |& tee -a "$LOG_FILE"
+	buildAndInstallLua |& tee -a "$LOG_FILE"
         configureAndInstall |& tee -a "$LOG_FILE"
         ;;
     "ubuntu-20.04" | "ubuntu-22.04" | "ubuntu-24.04" | "ubuntu-24.10")
