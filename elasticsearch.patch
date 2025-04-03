@@ -335,7 +335,6 @@ diff --git a/distribution/docker/build.gradle b/distribution/docker/build.gradle
    metricbeat_aarch64
    metricbeat_x86_64
 +  metricbeat_s390x
-+  fips
  }
  
 -String tiniArch = Architecture.current() == Architecture.AARCH64 ? 'arm64' : 'amd64'
@@ -356,6 +355,7 @@ diff --git a/distribution/docker/build.gradle b/distribution/docker/build.gradle
    filebeat_x86_64 "beats:filebeat:${VersionProperties.elasticsearch}:linux-x86_64@tar.gz"
    metricbeat_aarch64 "beats:metricbeat:${VersionProperties.elasticsearch}:linux-arm64@tar.gz"
    metricbeat_x86_64 "beats:metricbeat:${VersionProperties.elasticsearch}:linux-x86_64@tar.gz"
++  metricbeat_s390x "beats:metricbeat:${VersionProperties.elasticsearch}:linux-s390x@tar.gz"
 @@ -153,7 +165,7 @@
  
  private static String taskName(String prefix, Architecture architecture, DockerBase base, String suffix) {
@@ -428,10 +428,11 @@ diff --git a/distribution/docker/build.gradle b/distribution/docker/build.gradle
 @@ -530,7 +542,7 @@
        base = DockerBase.WOLFI
      }
- 
+
 -    final String arch = architecture == Architecture.AARCH64 ? '-aarch64' : ''
+-    final String extension = base == DockerBase.UBI ? 'ubi.tar' :
 +    final String arch = architecture == Architecture.AARCH64 ? '-aarch64' : architecture == Architecture.S390X ? '-s390x' : ''
-     final String extension = base == DockerBase.UBI ? 'ubi.tar' :
++    final String extension =
        (base == DockerBase.IRON_BANK ? 'ironbank.tar' :
            (base == DockerBase.CLOUD_ESS ? 'cloud-ess.tar' :
 @@ -565,7 +577,7 @@
@@ -680,9 +681,9 @@ diff --git a/settings.gradle b/settings.gradle
 +  'distribution:docker:docker-s390x-export',
    'distribution:docker:docker-export',
    'distribution:docker:ironbank-docker-aarch64-export',
-+  'distribution:docker:ironbank-docker-s390x-export',
    'distribution:docker:ironbank-docker-export',
    'distribution:docker:ubi-docker-aarch64-export',
++  'distribution:docker:ubi-docker-s390x-export',
    'distribution:docker:ubi-docker-export',
    'distribution:docker:wolfi-docker-aarch64-export',
    'distribution:docker:wolfi-docker-export',
