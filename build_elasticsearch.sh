@@ -179,10 +179,7 @@ function installJava() {
 function configureAndInstall() {
         printf -- '\nConfiguration and Installation started \n'
         # Install Java
-        local jver=17
-        if [[ $JAVA_PROVIDED =~ 21$ ]]; then
-            jver=21
-        fi
+        local jver=21
         installJava "$jver"
 
         export LANG="en_US.UTF-8"
