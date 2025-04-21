@@ -1,4 +1,4 @@
-Subject: [PATCH] elasticsearch patch with wolfi
+Subject: [PATCH] elasticsearch-all
 ---
 Index: server/src/main/java/org/elasticsearch/common/util/ByteUtils.java
 IDEA additional info:
@@ -364,7 +364,7 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 ===================================================================
 diff --git a/distribution/build.gradle b/distribution/build.gradle
 --- a/distribution/build.gradle	(revision c63c7f5f8ce7d2e4805b7b3d842e7e792d84dda1)
-+++ b/distribution/build.gradle	(date 1744788974543)
++++ b/distribution/build.gradle	(date 1745208620459)
 @@ -245,7 +245,7 @@
    // Setup all required JDKs
    project.jdks {
@@ -383,7 +383,7 @@ diff --git a/distribution/build.gradle b/distribution/build.gradle
          if (os != null) {
            String platform = os + '-' + architecture
            if (architecture == 'x64') {
-@@ -631,6 +631,7 @@
+@@ -631,10 +631,12 @@
   'archives:darwin-tar',
   'archives:darwin-aarch64-tar',
   'archives:linux-aarch64-tar',
@@ -391,6 +391,11 @@ diff --git a/distribution/build.gradle b/distribution/build.gradle
   'archives:linux-tar',
   'archives:integ-test-zip',
   'packages:rpm', 'packages:deb',
+  'packages:aarch64-rpm', 'packages:aarch64-deb',
++ 'packages:s390x-rpm', 'packages:s390x-deb',
+ ].forEach { subName ->
+   Project subproject = project("${project.path}:${subName}")
+   Configuration configuration = configurations.create(subproject.name)
 Index: distribution/archives/build.gradle
 IDEA additional info:
 Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
