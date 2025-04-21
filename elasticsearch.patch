@@ -1,4 +1,4 @@
-Subject: [PATCH] elasticsearch-all
+Subject: [PATCH] elasticsearch-final
 ---
 Index: server/src/main/java/org/elasticsearch/common/util/ByteUtils.java
 IDEA additional info:
@@ -364,7 +364,7 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 ===================================================================
 diff --git a/distribution/build.gradle b/distribution/build.gradle
 --- a/distribution/build.gradle	(revision c63c7f5f8ce7d2e4805b7b3d842e7e792d84dda1)
-+++ b/distribution/build.gradle	(date 1745208620459)
++++ b/distribution/build.gradle	(date 1745212552207)
 @@ -245,7 +245,7 @@
    // Setup all required JDKs
    project.jdks {
@@ -383,7 +383,7 @@ diff --git a/distribution/build.gradle b/distribution/build.gradle
          if (os != null) {
            String platform = os + '-' + architecture
            if (architecture == 'x64') {
-@@ -631,10 +631,12 @@
+@@ -631,6 +631,7 @@
   'archives:darwin-tar',
   'archives:darwin-aarch64-tar',
   'archives:linux-aarch64-tar',
@@ -391,11 +391,6 @@ diff --git a/distribution/build.gradle b/distribution/build.gradle
   'archives:linux-tar',
   'archives:integ-test-zip',
   'packages:rpm', 'packages:deb',
-  'packages:aarch64-rpm', 'packages:aarch64-deb',
-+ 'packages:s390x-rpm', 'packages:s390x-deb',
- ].forEach { subName ->
-   Project subproject = project("${project.path}:${subName}")
-   Configuration configuration = configurations.create(subproject.name)
 Index: distribution/archives/build.gradle
 IDEA additional info:
 Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
@@ -499,8 +494,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 ===================================================================
 diff --git a/settings.gradle b/settings.gradle
 --- a/settings.gradle	(revision c63c7f5f8ce7d2e4805b7b3d842e7e792d84dda1)
-+++ b/settings.gradle	(date 1744788838516)
-@@ -60,21 +60,29 @@
++++ b/settings.gradle	(date 1745212485026)
+@@ -60,21 +60,26 @@
    'distribution:archives:darwin-tar',
    'distribution:archives:darwin-aarch64-tar',
    'distribution:archives:linux-aarch64-tar',
@@ -509,18 +504,15 @@ diff --git a/settings.gradle b/settings.gradle
    'distribution:docker',
    'distribution:docker:cloud-ess-docker-export',
    'distribution:docker:cloud-ess-docker-aarch64-export',
-+  'distribution:docker:cloud-ess-docker-s390x-export',
    'distribution:docker:docker-aarch64-export',
 +  'distribution:docker:docker-s390x-export',
    'distribution:docker:docker-export',
    'distribution:docker:ironbank-docker-aarch64-export',
-+  'distribution:docker:ironbank-docker-s390x-export',
    'distribution:docker:ironbank-docker-export',
    'distribution:docker:ubi-docker-aarch64-export',
 +  'distribution:docker:ubi-docker-s390x-export',
    'distribution:docker:ubi-docker-export',
    'distribution:docker:wolfi-docker-aarch64-export',
-+  'distribution:docker:wolfi-docker-s390x-export',
    'distribution:docker:wolfi-docker-export',
    'distribution:packages:aarch64-deb',
 +  'distribution:packages:s390x-deb',
