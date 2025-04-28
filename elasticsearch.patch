@@ -1,4 +1,4 @@
-Subject: [PATCH] elasticsearch-f
+Subject: [PATCH] elasticsearch-java-fix
 ---
 Index: server/src/main/java/org/elasticsearch/common/util/ByteUtils.java
 IDEA additional info:
@@ -283,6 +283,23 @@ diff --git a/distribution/packages/build.gradle b/distribution/packages/build.gr
  tasks.register('buildRpm', Rpm) {
    configure(commonRpmConfig('x64'))
  }
+Index: plugins/discovery-ec2/qa/amazon-ec2/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/plugins/discovery-ec2/qa/amazon-ec2/build.gradle b/plugins/discovery-ec2/qa/amazon-ec2/build.gradle
+--- a/plugins/discovery-ec2/qa/amazon-ec2/build.gradle	(revision c63c7f5f8ce7d2e4805b7b3d842e7e792d84dda1)
++++ b/plugins/discovery-ec2/qa/amazon-ec2/build.gradle	(date 1745822246503)
+@@ -56,7 +56,7 @@
+     dependsOn project.sourceSets.yamlRestTest.runtimeClasspath
+     FileCollection cp = project.sourceSets.yamlRestTest.runtimeClasspath
+     env 'CLASSPATH', "${-> cp.asPath}"
+-    executable = "${buildParams.runtimeJavaHome.get() }/bin/java"
++    executable = "${System.getenv('JAVA_HOME')}/bin/java"
+     args 'org.elasticsearch.discovery.ec2.AmazonEC2Fixture', baseDir, "${buildDir}/testclusters/yamlRestTest${action}-1/config/unicast_hosts.txt"
+   }
+ 
 Index: server/src/main/java/org/elasticsearch/bootstrap/BootstrapChecks.java
 IDEA additional info:
 Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
