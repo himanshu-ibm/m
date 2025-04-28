@@ -116,6 +116,12 @@ function getJavaUrl() {
     "Temurin21")
         echo "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.5%2B11/OpenJDK21U-${jdist}_s390x_linux_hotspot_21.0.5_11.tar.gz"
         ;;
+    "Temurin22")
+        echo "https://github.com/adoptium/temurin22-binaries/releases/download/jdk-22.0.2%2B9/OpenJDK22U-${jdist}_s390x_linux_hotspot_22.0.2_9.tar.gz"
+        ;;
+    "Temurin23")
+       echo "https://github.com/adoptium/temurin23-binaries/releases/download/jdk-23.0.2%2B7/OpenJDK23U-${jdist}_s390x_linux_hotspot_23.0.2_7.tar.gz"
+        ;;
     esac
     echo ""
 }
@@ -130,6 +136,12 @@ function isValidJavaProvided() {
         return 0
         ;;
     "Temurin21")
+        return 0
+        ;;
+    "Temurin22")
+        return 0
+        ;;
+    "Temurin23")
         return 0
         ;;
     "OpenJDK21")
