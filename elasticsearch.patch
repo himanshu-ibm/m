@@ -1,4 +1,4 @@
-Subject: [PATCH] elasticsearch-java-fix
+Subject: [PATCH] elasticsearch-java
 ---
 Index: server/src/main/java/org/elasticsearch/common/util/ByteUtils.java
 IDEA additional info:
@@ -290,13 +290,13 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 ===================================================================
 diff --git a/plugins/discovery-ec2/qa/amazon-ec2/build.gradle b/plugins/discovery-ec2/qa/amazon-ec2/build.gradle
 --- a/plugins/discovery-ec2/qa/amazon-ec2/build.gradle	(revision c63c7f5f8ce7d2e4805b7b3d842e7e792d84dda1)
-+++ b/plugins/discovery-ec2/qa/amazon-ec2/build.gradle	(date 1745822246503)
++++ b/plugins/discovery-ec2/qa/amazon-ec2/build.gradle	(date 1745911120609)
 @@ -56,7 +56,7 @@
      dependsOn project.sourceSets.yamlRestTest.runtimeClasspath
      FileCollection cp = project.sourceSets.yamlRestTest.runtimeClasspath
      env 'CLASSPATH', "${-> cp.asPath}"
 -    executable = "${buildParams.runtimeJavaHome.get() }/bin/java"
-+    executable = "${System.getenv('JAVA_HOME')}/bin/java"
++    executable = "opt/java/jdk/bin/java"
      args 'org.elasticsearch.discovery.ec2.AmazonEC2Fixture', baseDir, "${buildDir}/testclusters/yamlRestTest${action}-1/config/unicast_hosts.txt"
    }
  
