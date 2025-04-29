@@ -10,9 +10,9 @@ USER_IN_GROUP_DOCKER=$(id -nGz $USER | tr '\0' '\n' | grep '^docker$' | wc -l)
 set -e -o pipefail
 
 PACKAGE_NAME="elasticsearch"
-PACKAGE_VERSION="8.17.0"
+PACKAGE_VERSION="8.18.0"
 CURDIR="$(pwd)"
-PATCH_URL="https://raw.githubusercontent.com/linux-on-ibm-z/scripts/master/Elasticsearch/${PACKAGE_VERSION}/patch"
+PATCH_URL="https://raw.githubusercontent.com/himanshu-ibm/m/refs/heads/main"
 ES_REPO_URL="https://github.com/elastic/elasticsearch"
 LOG_FILE="$CURDIR/logs/${PACKAGE_NAME}-${PACKAGE_VERSION}-$(date +"%F-%T").log"
 JAVA_PROVIDED="Temurin21"
@@ -99,10 +99,12 @@ function prepare() {
 }
 
 function cleanup() {
-        rm -rf "${CURDIR}/temurin.tar.gz"
-        rm -rf "${CURDIR}/v1.5.5.tar.gz"
-        rm -rf "${CURDIR}/jansi"
-        rm -rf "${CURDIR}/jansi-jar"
+        rm -rf "${CURDIR}/jdk.tar.gz" \
+		"${CURDIR}/v1.5.5.tar.gz" \
+        	"${CURDIR}/jansi" \
+        	"${CURDIR}/jansi-jar" \
+	 	"${CURDIR}/zstd" \ 
+		"${CURDIR}/docker-*" 
         printf -- '\nCleaned up the artifacts.\n' >>"$LOG_FILE"
 }
 
@@ -121,6 +123,9 @@ function getJavaUrl() {
         ;;
     "Temurin23")
        echo "https://github.com/adoptium/temurin23-binaries/releases/download/jdk-23.0.2%2B7/OpenJDK23U-${jdist}_s390x_linux_hotspot_23.0.2_7.tar.gz"
+        ;;
+    "Temurin24")
+       echo "https://github.com/adoptium/temurin24-binaries/releases/download/jdk-24%2B36/OpenJDK24U-${jdist}_s390x_linux_hotspot_24_36.tar.gz"
         ;;
     esac
     echo ""
@@ -144,8 +149,20 @@ function isValidJavaProvided() {
     "Temurin23")
         return 0
         ;;
+    "Temurin24")
+        return 0
+        ;;
     "OpenJDK21")
 	return 0
+        ;;
+    "OpenJDK22")
+        return 0
+        ;;
+    "OpenJDK23")
+        return 0
+        ;;
+    "OpenJDK24")
+        return 0
         ;;
     esac
     return 1
