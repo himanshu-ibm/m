@@ -10,7 +10,7 @@ USER_IN_GROUP_DOCKER=$(id -nGz $USER | tr '\0' '\n' | grep '^docker$' | wc -l)
 set -e -o pipefail
 
 PACKAGE_NAME="elasticsearch"
-PACKAGE_VERSION="8.18.0"
+PACKAGE_VERSION="9.0.0"
 CURDIR="$(pwd)"
 PATCH_URL="https://raw.githubusercontent.com/himanshu-ibm/m/refs/heads/main"
 ES_REPO_URL="https://github.com/elastic/elasticsearch"
@@ -116,7 +116,7 @@ function getJavaUrl() {
         echo "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.13%2B11/OpenJDK17U-${jdist}_s390x_linux_hotspot_17.0.13_11.tar.gz"
         ;;
     "Temurin21")
-        echo "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.5%2B11/OpenJDK21U-${jdist}_s390x_linux_hotspot_21.0.5_11.tar.gz"
+        echo "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.6%2B7/OpenJDK21U-${jdist}_s390x_linux_hotspot_21.0.6_7.tar.gz"
         ;;
     "Temurin22")
         echo "https://github.com/adoptium/temurin22-binaries/releases/download/jdk-22.0.2%2B9/OpenJDK22U-${jdist}_s390x_linux_hotspot_22.0.2_9.tar.gz"
