@@ -502,7 +502,7 @@ case "$DISTRO" in
         configureAndInstall |& tee -a "$LOG_FILE"
         ;;
 
-"ubuntu-22.04" )
+"ubuntu-22.04" | "ubuntu-24.04")
         sudo apt-get update
         sudo DEBIAN_FRONTEND=noninteractive apt-get install -y curl git gzip tar wget patch locales make gcc g++ |& tee -a "$LOG_FILE"
         sudo locale-gen en_US.UTF-8
