@@ -1,4 +1,4 @@
-Subject: [PATCH] elasticsearch-8.18
+Subject: [PATCH] ES9
 ---
 Index: server/src/main/java/org/elasticsearch/common/util/ByteUtils.java
 IDEA additional info:
@@ -6,8 +6,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/server/src/main/java/org/elasticsearch/common/util/ByteUtils.java b/server/src/main/java/org/elasticsearch/common/util/ByteUtils.java
---- a/server/src/main/java/org/elasticsearch/common/util/ByteUtils.java	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/server/src/main/java/org/elasticsearch/common/util/ByteUtils.java	(date 1745913265885)
+--- a/server/src/main/java/org/elasticsearch/common/util/ByteUtils.java	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/server/src/main/java/org/elasticsearch/common/util/ByteUtils.java	(date 1746165541330)
 @@ -82,6 +82,16 @@
          return (long) BIG_ENDIAN_LONG.get(arr, offset);
      }
@@ -31,8 +31,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/build-tools/src/main/java/org/elasticsearch/gradle/Architecture.java b/build-tools/src/main/java/org/elasticsearch/gradle/Architecture.java
---- a/build-tools/src/main/java/org/elasticsearch/gradle/Architecture.java	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/build-tools/src/main/java/org/elasticsearch/gradle/Architecture.java	(date 1745913065651)
+--- a/build-tools/src/main/java/org/elasticsearch/gradle/Architecture.java	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/build-tools/src/main/java/org/elasticsearch/gradle/Architecture.java	(date 1746164910685)
 @@ -12,7 +12,8 @@
  public enum Architecture {
  
@@ -57,8 +57,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/gradle.properties b/gradle.properties
---- a/gradle.properties	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/gradle.properties	(date 1745913111515)
+--- a/gradle.properties	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/gradle.properties	(date 1746164910721)
 @@ -12,7 +12,7 @@
  systemProp.jdk.tls.client.protocols=TLSv1.2
  
@@ -74,8 +74,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/server/src/main/java/org/elasticsearch/common/bytes/BytesReference.java b/server/src/main/java/org/elasticsearch/common/bytes/BytesReference.java
---- a/server/src/main/java/org/elasticsearch/common/bytes/BytesReference.java	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/server/src/main/java/org/elasticsearch/common/bytes/BytesReference.java	(date 1745913265879)
+--- a/server/src/main/java/org/elasticsearch/common/bytes/BytesReference.java	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/server/src/main/java/org/elasticsearch/common/bytes/BytesReference.java	(date 1746165541324)
 @@ -125,6 +125,16 @@
       */
      int getInt(int index);
@@ -99,8 +99,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/server/src/main/java/org/elasticsearch/common/bytes/AbstractBytesReference.java b/server/src/main/java/org/elasticsearch/common/bytes/AbstractBytesReference.java
---- a/server/src/main/java/org/elasticsearch/common/bytes/AbstractBytesReference.java	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/server/src/main/java/org/elasticsearch/common/bytes/AbstractBytesReference.java	(date 1745913265873)
+--- a/server/src/main/java/org/elasticsearch/common/bytes/AbstractBytesReference.java	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/server/src/main/java/org/elasticsearch/common/bytes/AbstractBytesReference.java	(date 1746165541320)
 @@ -38,6 +38,18 @@
          return (get(index) & 0xFF) << 24 | (get(index + 1) & 0xFF) << 16 | (get(index + 2) & 0xFF) << 8 | get(index + 3) & 0xFF;
      }
@@ -126,8 +126,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/server/src/main/java/org/elasticsearch/common/bytes/BytesArray.java b/server/src/main/java/org/elasticsearch/common/bytes/BytesArray.java
---- a/server/src/main/java/org/elasticsearch/common/bytes/BytesArray.java	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/server/src/main/java/org/elasticsearch/common/bytes/BytesArray.java	(date 1745913265877)
+--- a/server/src/main/java/org/elasticsearch/common/bytes/BytesArray.java	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/server/src/main/java/org/elasticsearch/common/bytes/BytesArray.java	(date 1746165541322)
 @@ -225,6 +225,20 @@
          os.write(bytes, offset, length);
      }
@@ -155,8 +155,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/server/src/main/java/org/elasticsearch/common/bytes/CompositeBytesReference.java b/server/src/main/java/org/elasticsearch/common/bytes/CompositeBytesReference.java
---- a/server/src/main/java/org/elasticsearch/common/bytes/CompositeBytesReference.java	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/server/src/main/java/org/elasticsearch/common/bytes/CompositeBytesReference.java	(date 1745913265881)
+--- a/server/src/main/java/org/elasticsearch/common/bytes/CompositeBytesReference.java	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/server/src/main/java/org/elasticsearch/common/bytes/CompositeBytesReference.java	(date 1746165541326)
 @@ -239,6 +239,42 @@
          return ramBytesUsed;
      }
@@ -206,8 +206,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/server/src/main/java/org/elasticsearch/common/bytes/ReleasableBytesReference.java b/server/src/main/java/org/elasticsearch/common/bytes/ReleasableBytesReference.java
---- a/server/src/main/java/org/elasticsearch/common/bytes/ReleasableBytesReference.java	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/server/src/main/java/org/elasticsearch/common/bytes/ReleasableBytesReference.java	(date 1745913265883)
+--- a/server/src/main/java/org/elasticsearch/common/bytes/ReleasableBytesReference.java	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/server/src/main/java/org/elasticsearch/common/bytes/ReleasableBytesReference.java	(date 1746165541328)
 @@ -102,6 +102,18 @@
          return delegate.getInt(index);
      }
@@ -233,9 +233,9 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/distribution/packages/build.gradle b/distribution/packages/build.gradle
---- a/distribution/packages/build.gradle	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/distribution/packages/build.gradle	(date 1745913265858)
-@@ -92,6 +92,8 @@
+--- a/distribution/packages/build.gradle	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/distribution/packages/build.gradle	(date 1746165541305)
+@@ -91,6 +91,8 @@
      if (type == 'deb') {
        if (architecture == 'x64') {
          arch = 'amd64'
@@ -244,7 +244,7 @@ diff --git a/distribution/packages/build.gradle b/distribution/packages/build.gr
        } else {
          assert architecture == 'aarch64': architecture
          arch = 'arm64'
-@@ -100,13 +102,15 @@
+@@ -99,13 +101,15 @@
        assert type == 'rpm': type
        if (architecture == 'x64') {
          arch = 'X86_64'
@@ -261,7 +261,7 @@ diff --git a/distribution/packages/build.gradle b/distribution/packages/build.gr
      destinationDirectory = file("${prefix}/build/distributions")
      archiveFileName.value(project.provider({ "${packageName}-${project.version}-${archString}.${type}" }))
      String packagingFiles = "build/packaging/${type}"
-@@ -351,6 +355,10 @@
+@@ -350,6 +354,10 @@
    configure(commonDebConfig('aarch64'))
  }
  
@@ -272,7 +272,7 @@ diff --git a/distribution/packages/build.gradle b/distribution/packages/build.gr
  tasks.register('buildDeb', Deb) {
    configure(commonDebConfig('x64'))
  }
-@@ -384,6 +392,10 @@
+@@ -383,6 +391,10 @@
    configure(commonRpmConfig('aarch64'))
  }
  
@@ -289,8 +289,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/server/src/main/java/org/elasticsearch/bootstrap/BootstrapChecks.java b/server/src/main/java/org/elasticsearch/bootstrap/BootstrapChecks.java
---- a/server/src/main/java/org/elasticsearch/bootstrap/BootstrapChecks.java	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/server/src/main/java/org/elasticsearch/bootstrap/BootstrapChecks.java	(date 1745913265870)
+--- a/server/src/main/java/org/elasticsearch/bootstrap/BootstrapChecks.java	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/server/src/main/java/org/elasticsearch/bootstrap/BootstrapChecks.java	(date 1746165541317)
 @@ -213,7 +213,6 @@
          checks.add(new OnOutOfMemoryErrorCheck());
          checks.add(new EarlyAccessCheck());
@@ -305,8 +305,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/x-pack/plugin/esql/arrow/src/main/java/org/elasticsearch/xpack/esql/arrow/BlockConverter.java b/x-pack/plugin/esql/arrow/src/main/java/org/elasticsearch/xpack/esql/arrow/BlockConverter.java
---- a/x-pack/plugin/esql/arrow/src/main/java/org/elasticsearch/xpack/esql/arrow/BlockConverter.java	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/x-pack/plugin/esql/arrow/src/main/java/org/elasticsearch/xpack/esql/arrow/BlockConverter.java	(date 1745913271190)
+--- a/x-pack/plugin/esql/arrow/src/main/java/org/elasticsearch/xpack/esql/arrow/BlockConverter.java	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/x-pack/plugin/esql/arrow/src/main/java/org/elasticsearch/xpack/esql/arrow/BlockConverter.java	(date 1746165541344)
 @@ -104,7 +104,7 @@
                  // TODO could we "just" get the memory of the array and dump it?
                  int count = BlockConverter.valueCount(block);
@@ -380,8 +380,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/distribution/build.gradle b/distribution/build.gradle
---- a/distribution/build.gradle	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/distribution/build.gradle	(date 1745913111526)
+--- a/distribution/build.gradle	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/distribution/build.gradle	(date 1746164959334)
 @@ -246,7 +246,7 @@
    // Setup all required JDKs
    project.jdks {
@@ -414,8 +414,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/distribution/archives/build.gradle b/distribution/archives/build.gradle
---- a/distribution/archives/build.gradle	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/distribution/archives/build.gradle	(date 1745913111529)
+--- a/distribution/archives/build.gradle	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/distribution/archives/build.gradle	(date 1746164959337)
 @@ -118,6 +118,13 @@
      }
    }
@@ -436,18 +436,9 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/distribution/docker/src/docker/Dockerfile b/distribution/docker/src/docker/Dockerfile
---- a/distribution/docker/src/docker/Dockerfile	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/distribution/docker/src/docker/Dockerfile	(date 1745913111534)
-@@ -42,7 +42,7 @@
- 
- # Install required packages to extract the Elasticsearch distribution
- <% if (docker_base == 'default' || docker_base == 'cloud') { %>
--RUN <%= retry.loop(package_manager, "${package_manager} update && DEBIAN_FRONTEND=noninteractive ${package_manager} install -y curl ") %>
-+RUN <%= retry.loop(package_manager, "${package_manager} update && DEBIAN_FRONTEND=noninteractive ${package_manager} install -y curl locales make gcc") %>
- <% } else if (docker_base == "wolfi") { %>
- RUN <%= retry.loop(package_manager, "export DEBIAN_FRONTEND=noninteractive && ${package_manager} update && ${package_manager} update && ${package_manager} add --no-cache curl") %>
- <% } else { %>
-@@ -62,6 +62,7 @@
+--- a/distribution/docker/src/docker/Dockerfile	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/distribution/docker/src/docker/Dockerfile	(date 1746165173303)
+@@ -60,6 +60,7 @@
          case "\$(arch)" in \\
              aarch64) tini_bin='tini-arm64' ;; \\
              x86_64)  tini_bin='tini-amd64' ;; \\
@@ -455,7 +446,7 @@ diff --git a/distribution/docker/src/docker/Dockerfile b/distribution/docker/src
              *) echo >&2 ; echo >&2 "Unsupported architecture \$(arch)" ; echo >&2 ; exit 1 ;; \\
          esac ; \\
          curl --retry 10 -S -L -O https://github.com/krallin/tini/releases/download/v0.19.0/\${tini_bin} ; \\
-@@ -81,7 +82,7 @@
+@@ -79,7 +80,7 @@
    // Iron Bank always copies the local artifact. It uses `arch` from the
    // template context variables.
  %>
@@ -464,7 +455,7 @@ diff --git a/distribution/docker/src/docker/Dockerfile b/distribution/docker/src
  <% } else {
    // Fetch the appropriate Elasticsearch distribution for this architecture.
    // Keep this command on one line - it is replaced with a `COPY` during local builds.
-@@ -113,10 +114,28 @@
+@@ -111,10 +112,28 @@
      mv config/log4j2.docker.properties config/log4j2.properties && \\
      find . -type d -exec chmod 0555 {} + && \\
      find . -type f -exec chmod 0444 {} + && \\
@@ -491,10 +482,10 @@ diff --git a/distribution/docker/src/docker/Dockerfile b/distribution/docker/src
 +    make -j\$(nproc) lib && \\
 +    make DESTDIR=_build install
 +
- <% if (docker_base == "cloud") { %>
- COPY filebeat-${version}.tar.gz metricbeat-${version}.tar.gz /tmp/
- RUN set -eux ; \\
-@@ -221,6 +240,9 @@
+ ################################################################################
+ # Build stage 2 (the actual Elasticsearch image):
+ #
+@@ -178,6 +197,9 @@
  
  WORKDIR /usr/share/elasticsearch
  
@@ -510,9 +501,9 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/settings.gradle b/settings.gradle
---- a/settings.gradle	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/settings.gradle	(date 1745913111518)
-@@ -60,21 +60,26 @@
+--- a/settings.gradle	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/settings.gradle	(date 1746164959315)
+@@ -60,19 +60,23 @@
    'distribution:archives:darwin-tar',
    'distribution:archives:darwin-aarch64-tar',
    'distribution:archives:linux-aarch64-tar',
@@ -526,9 +517,6 @@ diff --git a/settings.gradle b/settings.gradle
    'distribution:docker:docker-export',
    'distribution:docker:ironbank-docker-aarch64-export',
    'distribution:docker:ironbank-docker-export',
-   'distribution:docker:ubi-docker-aarch64-export',
-+  'distribution:docker:ubi-docker-s390x-export',
-   'distribution:docker:ubi-docker-export',
    'distribution:docker:wolfi-docker-aarch64-export',
    'distribution:docker:wolfi-docker-export',
    'distribution:packages:aarch64-deb',
@@ -545,8 +533,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/server/src/test/java/org/elasticsearch/common/bytes/BytesArrayTests.java b/server/src/test/java/org/elasticsearch/common/bytes/BytesArrayTests.java
---- a/server/src/test/java/org/elasticsearch/common/bytes/BytesArrayTests.java	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/server/src/test/java/org/elasticsearch/common/bytes/BytesArrayTests.java	(date 1745913271163)
+--- a/server/src/test/java/org/elasticsearch/common/bytes/BytesArrayTests.java	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/server/src/test/java/org/elasticsearch/common/bytes/BytesArrayTests.java	(date 1746165541337)
 @@ -108,4 +108,47 @@
          assertThat(e.getMessage(), equalTo("Index 9 out of bounds for length 9"));
      }
@@ -601,8 +589,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/gradle/verification-metadata.xml b/gradle/verification-metadata.xml
---- a/gradle/verification-metadata.xml	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/gradle/verification-metadata.xml	(date 1745914875885)
+--- a/gradle/verification-metadata.xml	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/gradle/verification-metadata.xml	(date 1746164910717)
 @@ -36,6 +36,31 @@
              <sha256 value="d083479ca927dce2f586f779373d895e8bf668c632505740279390384edf03fa" origin="Generated by Gradle"/>
           </artifact>
@@ -641,8 +629,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/server/src/main/java/org/elasticsearch/common/util/ReleasableIntArray.java b/server/src/main/java/org/elasticsearch/common/util/ReleasableIntArray.java
---- a/server/src/main/java/org/elasticsearch/common/util/ReleasableIntArray.java	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/server/src/main/java/org/elasticsearch/common/util/ReleasableIntArray.java	(date 1745913265888)
+--- a/server/src/main/java/org/elasticsearch/common/util/ReleasableIntArray.java	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/server/src/main/java/org/elasticsearch/common/util/ReleasableIntArray.java	(date 1746165541333)
 @@ -41,7 +41,7 @@
              // We can't serialize messages longer than 2gb anyway
              throw new ArrayIndexOutOfBoundsException();
@@ -658,8 +646,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/server/src/test/java/org/elasticsearch/common/bytes/CompositeBytesReferenceTests.java b/server/src/test/java/org/elasticsearch/common/bytes/CompositeBytesReferenceTests.java
---- a/server/src/test/java/org/elasticsearch/common/bytes/CompositeBytesReferenceTests.java	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/server/src/test/java/org/elasticsearch/common/bytes/CompositeBytesReferenceTests.java	(date 1745913271181)
+--- a/server/src/test/java/org/elasticsearch/common/bytes/CompositeBytesReferenceTests.java	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/server/src/test/java/org/elasticsearch/common/bytes/CompositeBytesReferenceTests.java	(date 1746165541339)
 @@ -229,4 +229,71 @@
          assertThat(comp.getLongLE(16), equalTo(512L));
          expectThrows(IndexOutOfBoundsException.class, () -> comp.getLongLE(17));
@@ -738,8 +726,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/libs/native/src/main/java/org/elasticsearch/nativeaccess/LinuxNativeAccess.java b/libs/native/src/main/java/org/elasticsearch/nativeaccess/LinuxNativeAccess.java
---- a/libs/native/src/main/java/org/elasticsearch/nativeaccess/LinuxNativeAccess.java	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/libs/native/src/main/java/org/elasticsearch/nativeaccess/LinuxNativeAccess.java	(date 1745913265866)
+--- a/libs/native/src/main/java/org/elasticsearch/nativeaccess/LinuxNativeAccess.java	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/libs/native/src/main/java/org/elasticsearch/nativeaccess/LinuxNativeAccess.java	(date 1746165541312)
 @@ -83,7 +83,9 @@
              "amd64",
              new Arch(0xC000003E, 0x3FFFFFFF, 57, 58, 59, 322, 317),
@@ -766,9 +754,9 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/build-tools-internal/src/main/java/org/elasticsearch/gradle/internal/Jdk.java b/build-tools-internal/src/main/java/org/elasticsearch/gradle/internal/Jdk.java
---- a/build-tools-internal/src/main/java/org/elasticsearch/gradle/internal/Jdk.java	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/build-tools-internal/src/main/java/org/elasticsearch/gradle/internal/Jdk.java	(date 1745913094360)
-@@ -24,7 +24,7 @@
+--- a/build-tools-internal/src/main/java/org/elasticsearch/gradle/internal/Jdk.java	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/build-tools-internal/src/main/java/org/elasticsearch/gradle/internal/Jdk.java	(date 1746164910700)
+@@ -25,7 +25,7 @@
  
  public class Jdk implements Buildable, Iterable<File> {
  
@@ -783,8 +771,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/test/fixtures/krb5kdc-fixture/src/main/java/org/elasticsearch/test/fixtures/krb5kdc/Krb5kDcContainer.java b/test/fixtures/krb5kdc-fixture/src/main/java/org/elasticsearch/test/fixtures/krb5kdc/Krb5kDcContainer.java
---- a/test/fixtures/krb5kdc-fixture/src/main/java/org/elasticsearch/test/fixtures/krb5kdc/Krb5kDcContainer.java	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/test/fixtures/krb5kdc-fixture/src/main/java/org/elasticsearch/test/fixtures/krb5kdc/Krb5kDcContainer.java	(date 1745913271184)
+--- a/test/fixtures/krb5kdc-fixture/src/main/java/org/elasticsearch/test/fixtures/krb5kdc/Krb5kDcContainer.java	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/test/fixtures/krb5kdc-fixture/src/main/java/org/elasticsearch/test/fixtures/krb5kdc/Krb5kDcContainer.java	(date 1746165541340)
 @@ -122,7 +122,7 @@
              .findFirst();
          String hostPortSpec = bindings.get().getHostPortSpec();
@@ -800,8 +788,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/build-tools-internal/src/main/java/org/elasticsearch/gradle/internal/toolchain/AdoptiumJdkToolchainResolver.java b/build-tools-internal/src/main/java/org/elasticsearch/gradle/internal/toolchain/AdoptiumJdkToolchainResolver.java
---- a/build-tools-internal/src/main/java/org/elasticsearch/gradle/internal/toolchain/AdoptiumJdkToolchainResolver.java	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/build-tools-internal/src/main/java/org/elasticsearch/gradle/internal/toolchain/AdoptiumJdkToolchainResolver.java	(date 1745913094357)
+--- a/build-tools-internal/src/main/java/org/elasticsearch/gradle/internal/toolchain/AdoptiumJdkToolchainResolver.java	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/build-tools-internal/src/main/java/org/elasticsearch/gradle/internal/toolchain/AdoptiumJdkToolchainResolver.java	(date 1746164910694)
 @@ -49,7 +49,8 @@
  
      private AdoptiumVersionRequest toVersionRequest(JavaToolchainRequest request) {
@@ -818,8 +806,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/build-tools-internal/version.properties b/build-tools-internal/version.properties
---- a/build-tools-internal/version.properties	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/build-tools-internal/version.properties	(date 1745913094342)
+--- a/build-tools-internal/version.properties	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/build-tools-internal/version.properties	(date 1746164910688)
 @@ -3,6 +3,8 @@
  
  bundled_jdk_vendor = openjdk
@@ -835,8 +823,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/libs/native/src/main/java/org/elasticsearch/nativeaccess/lib/LoaderHelper.java b/libs/native/src/main/java/org/elasticsearch/nativeaccess/lib/LoaderHelper.java
---- a/libs/native/src/main/java/org/elasticsearch/nativeaccess/lib/LoaderHelper.java	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/libs/native/src/main/java/org/elasticsearch/nativeaccess/lib/LoaderHelper.java	(date 1745913265863)
+--- a/libs/native/src/main/java/org/elasticsearch/nativeaccess/lib/LoaderHelper.java	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/libs/native/src/main/java/org/elasticsearch/nativeaccess/lib/LoaderHelper.java	(date 1746165541309)
 @@ -45,6 +45,8 @@
              arch = "x64";
          } else if (archname.equals("aarch64")) {
@@ -852,8 +840,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/server/src/main/java/org/elasticsearch/common/util/ReleasableDoubleArray.java b/server/src/main/java/org/elasticsearch/common/util/ReleasableDoubleArray.java
---- a/server/src/main/java/org/elasticsearch/common/util/ReleasableDoubleArray.java	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/server/src/main/java/org/elasticsearch/common/util/ReleasableDoubleArray.java	(date 1745913265886)
+--- a/server/src/main/java/org/elasticsearch/common/util/ReleasableDoubleArray.java	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/server/src/main/java/org/elasticsearch/common/util/ReleasableDoubleArray.java	(date 1746165541332)
 @@ -41,7 +41,7 @@
              // We can't serialize messages longer than 2gb anyway
              throw new ArrayIndexOutOfBoundsException();
@@ -869,8 +857,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/test/fixtures/krb5kdc-fixture/src/main/resources/provision/addprinc.sh b/test/fixtures/krb5kdc-fixture/src/main/resources/provision/addprinc.sh
---- a/test/fixtures/krb5kdc-fixture/src/main/resources/provision/addprinc.sh	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/test/fixtures/krb5kdc-fixture/src/main/resources/provision/addprinc.sh	(date 1745913271186)
+--- a/test/fixtures/krb5kdc-fixture/src/main/resources/provision/addprinc.sh	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/test/fixtures/krb5kdc-fixture/src/main/resources/provision/addprinc.sh	(date 1746165541342)
 @@ -9,8 +9,8 @@
  
  set -e
@@ -888,8 +876,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/server/src/main/java/org/elasticsearch/common/util/ReleasableLongArray.java b/server/src/main/java/org/elasticsearch/common/util/ReleasableLongArray.java
---- a/server/src/main/java/org/elasticsearch/common/util/ReleasableLongArray.java	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/server/src/main/java/org/elasticsearch/common/util/ReleasableLongArray.java	(date 1745913265890)
+--- a/server/src/main/java/org/elasticsearch/common/util/ReleasableLongArray.java	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/server/src/main/java/org/elasticsearch/common/util/ReleasableLongArray.java	(date 1746165541335)
 @@ -42,7 +42,7 @@
              // We can't serialize messages longer than 2gb anyway
              throw new ArrayIndexOutOfBoundsException();
@@ -905,8 +893,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/distribution/docker/src/docker/config/elasticsearch.yml b/distribution/docker/src/docker/config/elasticsearch.yml
---- a/distribution/docker/src/docker/config/elasticsearch.yml	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/distribution/docker/src/docker/config/elasticsearch.yml	(date 1745913111531)
+--- a/distribution/docker/src/docker/config/elasticsearch.yml	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/distribution/docker/src/docker/config/elasticsearch.yml	(date 1746164959339)
 @@ -1,2 +1,3 @@
  cluster.name: "docker-cluster"
  network.host: 0.0.0.0
@@ -917,8 +905,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/distribution/docker/build.gradle b/distribution/docker/build.gradle
---- a/distribution/docker/build.gradle	(revision 04e979aa50b657bebd4a0937389308de82c2bdad)
-+++ b/distribution/docker/build.gradle	(date 1745913265839)
+--- a/distribution/docker/build.gradle	(revision 112859b85d50de2a7e63f73c8fc70b99eea24291)
++++ b/distribution/docker/build.gradle	(date 1746165541285)
 @@ -82,33 +82,45 @@
        attribute(ArtifactTypeDefinition.ARTIFACT_TYPE_ATTRIBUTE, ArtifactTypeDefinition.DIRECTORY_TYPE)
      }
@@ -1036,20 +1024,18 @@ diff --git a/distribution/docker/build.gradle b/distribution/docker/build.gradle
 -    final Architecture architecture = subProject.name.contains('aarch64-') ? Architecture.AARCH64 : Architecture.X64
 +    final Architecture architecture = subProject.name.contains('aarch64-') ? Architecture.AARCH64 : subProject.name.contains('s390x-') ? Architecture.S390X : Architecture.X64
      DockerBase base = DockerBase.DEFAULT
-     if (subProject.name.contains('ubi-')) {
-       base = DockerBase.UBI
-@@ -537,8 +549,8 @@
+     if (subProject.name.contains('ironbank-')) {
+       base = DockerBase.IRON_BANK
+@@ -535,7 +547,7 @@
        base = DockerBase.WOLFI
      }
  
 -    final String arch = architecture == Architecture.AARCH64 ? '-aarch64' : ''
--    final String extension = base == DockerBase.UBI ? 'ubi.tar' :
 +    final String arch = architecture == Architecture.AARCH64 ? '-aarch64' : architecture == Architecture.S390X ? '-s390x' : ''
-+    final String extension =
+     final String extension =
        (base == DockerBase.IRON_BANK ? 'ironbank.tar' :
-           (base == DockerBase.CLOUD_ESS ? 'cloud-ess.tar' :
-             (base == DockerBase.WOLFI ? 'wolfi.tar' :
-@@ -576,7 +588,7 @@
+         (base == DockerBase.CLOUD_ESS ? 'cloud-ess.tar' :
+@@ -574,7 +586,7 @@
        it.setCompression(Compression.GZIP)
        it.getArchiveBaseName().set("elasticsearch${base.suffix}-${VersionProperties.elasticsearch}-docker-image")
        it.getArchiveVersion().set("")
