@@ -3,7 +3,7 @@
 # LICENSE: Apache License, Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
 #
 # Instructions:
-# Download build script: wget https://raw.githubusercontent.com/linux-on-ibm-z/scripts/master/Elasticsearch/8.17.0/build_elasticsearch.sh
+# Download build script: wget https://raw.githubusercontent.com/linux-on-ibm-z/scripts/master/Elasticsearch/9.0.0/build_elasticsearch.sh
 # Execute build script: bash build_elasticsearch.sh    (provide -h for help)
 #
 USER_IN_GROUP_DOCKER=$(id -nGz $USER | tr '\0' '\n' | grep '^docker$' | wc -l)
@@ -407,7 +407,7 @@ function runTest() {
                 set +e
                 # Run Elasticsearch test suite
                 printf -- '\n Running Elasticsearch test suite.\n'
-                ./gradlew --continue test internalClusterTest -Dtests.haltonfailure=false -Dtests.jvm.argline="-Xss2m" |& tee -a ${CURDIR}/logs/test_results_${JAVA_PROVIDED}.log
+                ./gradlew --continue test internalClusterTest -x :libs:entitlement:bridge:compileMain23Java -x :libs:entitlement:compileMain23Java -x :libs:native:compileMain22Java -x :libs:simdvec:compileMain22Java -Dtests.haltonfailure=false -Dtests.jvm.argline="-Xss2m" |& tee -a ${CURDIR}/logs/test_results_${JAVA_PROVIDED}.log
                 printf -- '*****************************************************************************************************\n'
                 printf -- 'Some X-Pack test cases may fail as not all X-Pack plugins are not supported on s390x, such as Machine Learning features.\n\n'
                 printf -- 'Certain test cases such as RuleQueryBuilderTests may require an individual rerun to pass.\nTests can be rerun with a command like:\n'
