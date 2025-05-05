@@ -443,7 +443,7 @@ diff --git a/distribution/docker/src/docker/Dockerfile b/distribution/docker/src
  RUN <%= retry.loop(package_manager, "export DEBIAN_FRONTEND=noninteractive && ${package_manager} update && ${package_manager} update && ${package_manager} add --no-cache curl") %>
  <% } else { %>
 -RUN <%= retry.loop(package_manager, "${package_manager} install -y findutils tar gzip") %>
-+RUN <%= retry.loop(package_manager, "${package_manager} install -y findutils tar gzip make gcc curl") %>
++RUN <%= retry.loop(package_manager, "${package_manager} install -y findutils tar gzip make gcc") %>
  <% } %>
  
  <% if (docker_base != 'wolfi') { %>
