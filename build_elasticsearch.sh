@@ -340,7 +340,7 @@ function configureAndInstall() {
         printf -- 'Build might take some time. Sit back and relax\n'
         export GRADLE_USER_HOME=$CURDIR/.gradle
         printf -- "export GRADLE_USER_HOME=$GRADLE_USER_HOME\n" >> "$BUILD_ENV"
-        ./gradlew :distribution:archives:linux-s390x-tar:assemble --max-workers="$CPU_NUM" --parallel
+        ./gradlew :distribution:archives:linux-s390x-tar:assemble -x :libs:entitlement:bridge:compileMain23Java -x :libs:entitlement:compileMain23Java -x :libs:native:compileMain22Java -x :libs:simdvec:compileMain22Java --max-workers="$CPU_NUM" --parallel
 
         # Verifying Elasticsearch installation
         if [[ $(grep -q "BUILD FAILED" "$LOG_FILE") ]]; then
@@ -350,11 +350,11 @@ function configureAndInstall() {
         printf -- 'Built Elasticsearch successfully. \n\n'
 
         printf -- 'Creating distributions as deb, rpm and docker: \n\n'
-        ./gradlew :distribution:packages:s390x-deb:assemble
+        ./gradlew :distribution:packages:s390x-deb:assemble -x :libs:entitlement:bridge:compileMain23Java -x :libs:entitlement:compileMain23Java -x :libs:native:compileMain22Java -x :libs:simdvec:compileMain22Java
         printf -- 'Created deb distribution. \n\n'
-        ./gradlew :distribution:packages:s390x-rpm:assemble
+        ./gradlew :distribution:packages:s390x-rpm:assemble -x :libs:entitlement:bridge:compileMain23Java -x :libs:entitlement:compileMain23Java -x :libs:native:compileMain22Java -x :libs:simdvec:compileMain22Java
         printf -- 'Created rpm distribution. \n\n'
-        ./gradlew :distribution:docker:docker-s390x-export:assemble
+        ./gradlew :distribution:docker:docker-s390x-export:assemble -x :libs:entitlement:bridge:compileMain23Java -x :libs:entitlement:compileMain23Java -x :libs:native:compileMain22Java -x :libs:simdvec:compileMain22Java
         printf -- 'Created docker distribution. \n\n'
 
         # Adding libzstd.so object file to native libraries in Elasticsearch
